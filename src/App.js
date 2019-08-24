@@ -3,27 +3,32 @@ import './App.css';
 import MessageList from './MessageList';
 import SendMessageBox from './SendMessageBox';
 
-const DUMMY_DATA = [
-    {
-    senderId: "adamsmith",
-    text: "test1"
-    },
-    {
-    senderId: "janedoe",
-    text: "test2"
-    }
-]
-
 const App = () => {
-    const [messages, setMessages] = useState([])
+    const [messages, setMessages] = useState([{
+        senderId: "Bot",
+        message: "What are you thinking about?"
+    }])
+
+    const getBotMessage = async (obj) => {
+        let response = await fetch("http://127.0.0.1:8000/api/talk/", {
+            method: 'POST',
+            body: JSON.stringify(obj),
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        })
+        let data = await response.json()
+        setMessages(messages.concat([obj, {senderId: "Bot", message: data.reply}]))
+    }
 
     // Send messages to server here to invoke response
     const sendMessage = (text) => {
         const textObj = {
             senderId: "You",
-            text: text
+            message: text
         }
-        setMessages(messages.concat([textObj]))
+        // A synchronous message
+        getBotMessage(textObj)
     }
 
     return (

@@ -12,7 +12,7 @@ const MessageList = (props) => {
                             {message.senderId}
                         </div>
                         <div>
-                            {message.text}
+                            {message.message}
                         </div>
                     </li>
                 )
