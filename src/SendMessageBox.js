@@ -21,7 +21,7 @@ const SendMessageBox = (props) => {
             <input
                 onChange={handleChange}
                 value={typedMessage}
-                placeholder="Type message here!"
+                placeholder="Type message and hit ENTER"
                 type="text"/>
 
         </form>

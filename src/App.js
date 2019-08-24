@@ -14,13 +14,17 @@ const DUMMY_DATA = [
     }
 ]
 
-// Send messages to server here
-const sendMessage = (text) => {
-    console.log(text)
-}
-
 const App = () => {
-    const [messages, setMessages] = useState(DUMMY_DATA)
+    const [messages, setMessages] = useState([])
+
+    // Send messages to server here to invoke response
+    const sendMessage = (text) => {
+        const textObj = {
+            senderId: "You",
+            text: text
+        }
+        setMessages(messages.concat([textObj]))
+    }
 
     return (
         <div id="App">
