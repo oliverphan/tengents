@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
 
 const SendImageBox = (props) => {
-    const {setMessages} = props
+    const {messages, setMessages} = props
     const [file, setFile] = useState('')
 
     const handleSubmit = (e) => {
         e.preventDefault()
-        
+
         fetch("http://127.0.0.1:8000/api/picture", {
             method: 'POST',
             body: file

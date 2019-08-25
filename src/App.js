@@ -36,7 +36,7 @@ const App = () => {
         <div id="App">
             <MessageList messages={messages} />
             <SendMessageBox sendMessage={sendMessage}/>
-            <SendImageBox />
+            <SendImageBox messages={messages} setMessages={setMessages}/>
         </div>
     );
 }
