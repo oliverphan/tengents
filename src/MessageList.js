@@ -1,4 +1,5 @@
 import React from 'react';
+import './MessageList.css';
 
 const MessageList = (props) => {
     // Messages is an array of objects
@@ -8,10 +9,8 @@ const MessageList = (props) => {
             {messages.map(message => {
                 return (
                     <li key={message.id}>
-                        <div>
-                            {message.senderId}
-                        </div>
-                        <div>
+                        <span className="name">{message.senderId}</span>
+                        <div className="dialogue">
                             {message.message}
                         </div>
                     </li>

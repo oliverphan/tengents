@@ -1,0 +1,16 @@
+.message-list{
+	list-style: none;
+}
+.dialogue{
+	background-color: coral;
+	color: white;
+	border-radius: 30px;
+	margin:10px;
+	padding:20px;
+	width:300px;
+}
+
+.name{
+	color:grey;
+	padding: 20px;
+}

@@ -1,4 +1,6 @@
 #App {
-  text-align: left;
-  color: red;
-}
+    color: black;
+    border-style: solid;
+    border-width: 1px;
+    width:700px;
+  }

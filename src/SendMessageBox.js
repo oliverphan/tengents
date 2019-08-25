@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import './SendMessageBox.css'
 
 const SendMessageBox = (props) => {
     const {sendMessage, sendImageUrl} = props
