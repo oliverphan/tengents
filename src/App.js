@@ -59,7 +59,7 @@ const App = () => {
         getBotInsight(imageMsgObj)
     }
 
-    const displayInsightsFlag = () => {
+    const displayInsightsSetter = () => {
         setDisplayInsightsFlag(!displayInsightsFlag)
     }
 
@@ -74,7 +74,7 @@ const App = () => {
                 <MessageList messages={messages} />
                 <SendMessageBox sendMessage={sendMessage}/>
                 <SendImageBox sendImageUrl={sendImageUrl}/>
-                <Button className="continue" onClick={displayInsightsFlag}>More insights?</Button>
+                <Button className="continue" onClick={displayInsightsSetter}>More insights?</Button>
                 {displayInsights}
             </div>
         );
