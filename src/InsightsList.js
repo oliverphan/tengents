@@ -4,7 +4,7 @@ const InsightsList = (props) => {
     const {insights} = props;
     return(
         <ol className="insights-list">
-            {insightText.map(insight => {
+            {insights.map(insight => {
                 return (
                     <li key={insight.id}>
                         <div>
