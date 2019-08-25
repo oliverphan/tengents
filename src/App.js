@@ -70,8 +70,8 @@ const App = () => {
         return (
             <div id="App">
                 <MessageList messages={messages} />
-                <SendMessageBox sendMessage={sendMessage}/>
-                <SendImageBox sendImageUrl={sendImageUrl}/>
+                <SendMessageBox sendMessage={sendMessage} sendImageUrl={sendImageUrl}/>
+                {/* <SendImageBox sendImageUrl={sendImageUrl}/> */}
                 <button className="insightsButton" onClick={displayInsightsSetter()}>View Insights</button>
                 {displayInsights}
             </div>
@@ -80,8 +80,8 @@ const App = () => {
         return(
             <div id="App">
                 <MessageList messages={messages} />
-                <SendMessageBox sendMessage={sendMessage}/>
-                <SendImageBox sendImageUrl={sendImageUrl}/>
+                <SendMessageBox sendMessage={sendMessage} sendImageUrl={sendImageUrl}/>
+                {/* <SendImageBox sendImageUrl={sendImageUrl}/> */}
             </div>
         )
     }

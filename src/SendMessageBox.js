@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 
 const SendMessageBox = (props) => {
-    const {sendMessage} = props
+    const {sendMessage, sendImageUrl} = props
     const [typedMessage, setTypedMessage] = useState('')
 
     const handleChange = (e) => {
@@ -10,7 +10,12 @@ const SendMessageBox = (props) => {
 
     const handleSubmit = (e) => {
         e.preventDefault()
-        sendMessage(typedMessage)
+        // sendMessage(typedMessage)
+        if (typedMessage.startsWith("http")) {
+            sendImageUrl(typedMessage)
+        } else {
+            sendMessage(typedMessage)
+        }
         setTypedMessage('')
     }
 
