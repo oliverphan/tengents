@@ -47,13 +47,13 @@ const App = () => {
             }
         })
         let insight = await response.json()
-        setInsights(insights.concat(insight))
+        setInsights(insights.concat(insight.map()))
     }
 
     const sendImageUrl = (text) => {
         const imageMsgObj = {
             senderId: "You",
-            message: text
+            image: text
         }
         setInsightCount(insightCount + 1)
         getBotInsight(imageMsgObj)
