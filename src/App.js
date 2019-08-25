@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, Button } from 'react';
 import './App.css';
 import MessageList from './MessageList';
 import SendMessageBox from './SendMessageBox';
@@ -68,24 +68,26 @@ const App = () => {
         displayInsights = <InsightsList insights={insights}/>
     }
 
-    if (insightCount % 10 == 0) {
+    if (insightCount % 10 === 0) {
+        displayInsightsSetter()
         return (
             <div id="App">
                 <MessageList messages={messages} />
                 <SendMessageBox sendMessage={sendMessage}/>
                 <SendImageBox sendImageUrl={sendImageUrl}/>
-                <Button className="continue" onClick={displayInsightsSetter}>More insights?</Button>
+                <Button className="continue">More insights?</Button>
                 {displayInsights}
             </div>
         );
     } else {
+        return(
             <div id="App">
                 <MessageList messages={messages} />
                 <SendMessageBox sendMessage={sendMessage}/>
                 <SendImageBox sendImageUrl={sendImageUrl}/>
                 {displayInsights}
             </div>
-        
+        )
     }
 
 }
