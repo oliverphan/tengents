@@ -1,33 +1,37 @@
 import React, { useState } from 'react';
 
 const SendImageBox = (props) => {
-    const {messages, setMessages} = props
-    const [file, setFile] = useState('')
+    const {sendImageUrl} = props
+    const [typedMessage, setTypedMessage] = useState('')
 
     const handleSubmit = (e) => {
         e.preventDefault()
 
-        let form_data = new FormData()
-        form_data.append('image', file);
+        sendImageUrl(typedMessage)
+        setTypedMessage('')
+        // let form_data = new FormData()
+        // form_data.append('image', file);
 
-        fetch("http://127.0.0.1:8000/api/picture/", {
-            method: 'POST',
-            body: form_data,
-            headers: {
-                'Content-Type': 'multipart/form-data'
-            }
-        })
-        .then(res => res.json())
-        .then(response => {
-            setMessages(messages.concat([{senderId: "Bot", message: response.reply}]))
-        })
+        // fetch("http://127.0.0.1:8000/api/picture/", {
+        //     method: 'POST',
+        //     body: form_data,
+        //     headers: {
+        //         'Content-Type': 'multipart/form-data'
+        //     }
+        // })
+        // .then(res => res.json())
+        // .then(response => {
+        //     setMessages(messages.concat([{senderId: "Bot", message: response.reply}]))
+        // })
 
-        console.log("handle uploading ", file);
+        // console.log("handle uploading ", file);
     }
     
     const handleChange = (e) => {
 
-            setFile(e.target.files[0])
+        setTypedMessage(e.target.value)
+
+        // setFile(e.target.files[0])
 
         // e.preventDefault()
 
@@ -42,16 +46,13 @@ const SendImageBox = (props) => {
     }
 
     return (
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit}
+            className="send-img-link">
             <input
-                className="fileInput"
-                type="file"
-                onChange={handleChange} />
-            <button className="submitButton"
-                type="submit"
-                onClick={handleSubmit}>
-                Send image once chosen
-                </button>
+                value={typedMessage}
+                onChange={handleChange}
+                placeholder="Paste link to image"
+                type="text" />
         </form>
     )
 
