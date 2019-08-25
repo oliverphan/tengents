@@ -7,11 +7,14 @@ const SendImageBox = (props) => {
     const handleSubmit = (e) => {
         e.preventDefault()
 
+        let form_data = new FormData()
+        form_data.append('image', file);
+
         fetch("http://127.0.0.1:8000/api/picture/", {
             method: 'POST',
-            body: {image: file},
+            body: form_data,
             headers: {
-                'Content-Type': 'image/jpeg'
+                'Content-Type': 'multipart/form-data'
             }
         })
         .then(res => res.json())
@@ -23,16 +26,19 @@ const SendImageBox = (props) => {
     }
     
     const handleChange = (e) => {
-        e.preventDefault()
 
-        const reader = new FileReader();
-        let file = e.target.files[0]
+            setFile(e.target.files[0])
 
-        reader.onloadend = () => {
-            setFile(file);
-        }
+        // e.preventDefault()
 
-        reader.readAsDataURL(file)
+        // const reader = new FileReader();
+        // let file = e.target.files[0]
+
+        // reader.onloadend = () => {
+        //     setFile(file);
+        // }
+
+        // reader.readAsDataURL(file)
     }
 
     return (
