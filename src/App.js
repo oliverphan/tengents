@@ -1,4 +1,4 @@
-import React, { useState, Button } from 'react';
+import React, { useState } from 'react';
 import './App.css';
 import MessageList from './MessageList';
 import SendMessageBox from './SendMessageBox';
@@ -12,8 +12,8 @@ const App = () => {
     }])
 
     const [insights, setInsights] = useState([])
-    const [insightCount, setInsightCount] = useState([])
-    const [displayInsightsFlag, setDisplayInsightsFlag] = useState(false)
+    const [insightCount, setInsightCount] = useState(0)
+    // const [displayInsightsFlag, setDisplayInsightsFlag] = useState(false)
 
     const getBotMessage = async (obj) => {
         let response = await fetch("http://127.0.0.1:8000/api/talk/", {
@@ -59,23 +59,20 @@ const App = () => {
         getBotInsight(imageMsgObj)
     }
 
-    const displayInsightsSetter = () => {
-        setDisplayInsightsFlag(!displayInsightsFlag)
-    }
-
     let displayInsights = null
-    if (displayInsightsFlag) {
+    const displayInsightsSetter = () => {
+        // setDisplayInsightsFlag(!displayInsightsFlag)
         displayInsights = <InsightsList insights={insights}/>
     }
 
-    if (insightCount % 10 === 0) {
-        displayInsightsSetter()
+    console.log(insightCount)
+    if (insightCount >= 10) {
         return (
             <div id="App">
                 <MessageList messages={messages} />
                 <SendMessageBox sendMessage={sendMessage}/>
                 <SendImageBox sendImageUrl={sendImageUrl}/>
-                <Button className="continue">More insights?</Button>
+                <button className="insightsButton" onClick={displayInsightsSetter()}>View Insights</button>
                 {displayInsights}
             </div>
         );
@@ -85,7 +82,6 @@ const App = () => {
                 <MessageList messages={messages} />
                 <SendMessageBox sendMessage={sendMessage}/>
                 <SendImageBox sendImageUrl={sendImageUrl}/>
-                {displayInsights}
             </div>
         )
     }
