@@ -47,7 +47,7 @@ const App = () => {
             }
         })
         let insight = await response.json()
-        setInsights(insights.concat(insight.map()))
+        setInsights(insights.concat(insight))
     }
 
     const sendImageUrl = (text) => {
