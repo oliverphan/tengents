@@ -5,18 +5,24 @@ import SendMessageBox from './SendMessageBox';
 import SendImageBox from './SendImageBox';
 import InsightsList from './InsightsList';
 import { bigIntLiteral } from '@babel/types';
+import p from './pos.jpg'
+import f from './fr.png'
+import n from './neutral-face.png'
+import c from './images.png'
+
 
 const App = () => {
     const [messages, setMessages] = useState([{
         senderId: "Tengents",
         message: "What are you thinking about?"
     }])
+    const [imageLink, setImageLink] = useState(p)
 
     const [insights, setInsights] = useState([])
     const [insightCount, setInsightCount] = useState(0)
     // const [displayInsightsFlag, setDisplayInsightsFlag] = useState(false)
 
-    let imageLink = null
+    let link = null
     const getBotMessage = async (obj) => {
         let response = await fetch("http://127.0.0.1:8000/api/talk/", {
             method: 'POST',
@@ -29,18 +35,20 @@ const App = () => {
         const sentiment = data.Sentiment
         switch (sentiment) {
             case "POSITIVE":
-                imageLink = "https://cdn10.bigcommerce.com/s-npe4l/products/555/images/1631/M-MZ-SMIL---High__27907.1498757701.1280.1280.jpg?c=2"
+                link = p
                 break;
             case "NEGATIVE":
-                imageLink = "https://www.dictionary.com/e/wp-content/uploads/2018/09/slightly-frowning-face.png"
+                link = f
                 break;
             case "NEUTRAL":
-                imageLink = "https://s3.amazonaws.com/pix.iemoji.com/images/emoji/apple/ios-12/256/neutral-face.png"
+                link = n
                 break;
             default:
-                imageLink = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSJmR7JtQbfwzvS7nBBweuLkvKhJbr9AsIpYXQ3QKtBFiFyNW01"
+                link = c
                 break;
-        }
+    
+        }console.log(link)
+        setImageLink(link)
         setMessages(messages.concat([obj, {senderId: "Tengents", message: data.reply}]))
     }
 
@@ -75,7 +83,6 @@ const App = () => {
         setInsightCount(insightCount + 1)
         getBotInsight(imageMsgObj)
     }
-
     let displayInsights = null
     const displayInsightsSetter = () => {
         // setDisplayInsightsFlag(!displayInsightsFlag)
@@ -89,7 +96,7 @@ const App = () => {
                 <MessageList messages={messages} />
                 <SendMessageBox sendMessage={sendMessage} sendImageUrl={sendImageUrl}/>
                 {/* <SendImageBox sendImageUrl={sendImageUrl}/> */}
-                <img src={imageLink}/>
+                <img src={imageLink} height="200" width="200"/>
                 <button className="insightsButton" onClick={displayInsightsSetter()}>View Insights</button>
                 {displayInsights}
             </div>
@@ -100,7 +107,7 @@ const App = () => {
                 <MessageList messages={messages} />
                 <SendMessageBox sendMessage={sendMessage} sendImageUrl={sendImageUrl}/>
                 {/* <SendImageBox sendImageUrl={sendImageUrl}/> */}
-                <img src={imageLink}/>
+                <img src={imageLink} height="200" width="200"/>
             </div>
         )
     }
