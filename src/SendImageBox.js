@@ -9,7 +9,7 @@ const SendImageBox = (props) => {
 
         fetch("http://127.0.0.1:8000/api/picture/", {
             method: 'POST',
-            body: file,
+            body: {image: file},
             headers: {
                 'Content-Type': 'image/jpeg'
             }
