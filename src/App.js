@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import './App.css';
 import MessageList from './MessageList';
 import SendMessageBox from './SendMessageBox';
+import SendImageBox from './SendImageBox';
 
 const App = () => {
     const [messages, setMessages] = useState([{
@@ -35,6 +36,7 @@ const App = () => {
         <div id="App">
             <MessageList messages={messages} />
             <SendMessageBox sendMessage={sendMessage}/>
+            <SendImageBox />
         </div>
     );
 }
