@@ -7,9 +7,12 @@ const SendImageBox = (props) => {
     const handleSubmit = (e) => {
         e.preventDefault()
 
-        fetch("http://127.0.0.1:8000/api/picture", {
+        fetch("http://127.0.0.1:8000/api/picture/", {
             method: 'POST',
-            body: file
+            body: file,
+            headers: {
+                'Content-Type': 'image/jpeg'
+            }
         })
         .then(res => res.json())
         .then(response => {
@@ -41,7 +44,7 @@ const SendImageBox = (props) => {
             <button className="submitButton"
                 type="submit"
                 onClick={handleSubmit}>
-                Upload Image
+                Send image once chosen
                 </button>
         </form>
     )
