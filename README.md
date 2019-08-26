@@ -1,4 +1,48 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+A hackathon project built over the weekend Aug 23-25, at Hackthe6ix 2019.
+
+## Inspiration
+We had to cramp for an idea so our idea was about creating ideas.
+
+## What it does
+
+Talk and reply like a real person
+
+Ask user questions to expand the bot's prediction of what user is getting ideas for
+
+Allows user to upload picture to express their ideas, and uses image recognition to further investigate path user wants to be creative through
+
+Detects user's emotions throughout via sentiment analysis
+
+Generates idea after ten texts (thus the name tengents, like tangents but ten-gents) 
+
+
+## How we built it
+
+Django rest server in the backend which uses AWS comprehend, rekognition and eliza. 
+
+ReactJS front end.
+
+## Challenges we ran into
+
+Having little front end development experience was a liability in setting up the chat service. Routing data from the top of the stack to process in the AWS console was difficult as none of the members have worked with AWS previously.
+
+## Accomplishments that we're proud of
+
+Our chat bot talks like a person and it integrates machine learning and overall works! We are able to successfully display different pictures and results based on the sentiment/image analysis of the hyperlinks and chat.
+
+Developing the concept and working together was also really awesome.
+
+## What we learned
+
+It would be helpful in the future to have more technical experience, not to overlook any parts of the stack. Design criteria needs to be fitted more accordingly to the skill level of the developers, and possibly emphasize a MVP faster in the production timeline.
+
+## What's next for Tengent
+
+There are many other features still missing, such as aggregating insights and visualizing with a word map. We would like to have a dual-pane on the right side of the page to be able to show visuals for the analysis of chat/pictures so users can have more creative cues!
+
+___
+
+######This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
 
